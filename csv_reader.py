@@ -24,3 +24,5 @@ def read_csv(filepath):
     df = df.replace(',', '.', regex=True)
         
     return df
+
+print(read_csv('./Data/SPG_001.csv'))
