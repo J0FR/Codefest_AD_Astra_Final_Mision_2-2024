@@ -17,3 +17,8 @@ Codefest_Ad_Astra_Final_Mision_2-2024/
 │
 └── README.md
 ```
+
+## Video
+
+https://github.com/user-attachments/assets/accf1bb2-4816-4e26-82b0-396b0306a5d3
+
