@@ -1,4 +1,5 @@
 import csv
+import pandas as pd
 
 def read_csv(filepath):
     blanks = 0
@@ -19,4 +20,7 @@ def read_csv(filepath):
         columns = data[3]
         data = data[4:]
         
-    return data, columns
+    df = pd.DataFrame(data, columns=columns)
+    df = df.replace(',', '.', regex=True)
+        
+    return df
