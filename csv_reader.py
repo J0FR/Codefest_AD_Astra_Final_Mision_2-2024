@@ -16,6 +16,7 @@ def read_csv(filepath):
             if blanks == 2:
                 data.append(row)
 
+        columns = data[3]
         data = data[4:]
         
-    return data
+    return data, columns
