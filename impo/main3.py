@@ -180,3 +180,68 @@ def calcular_crest_factor(df):
     pico = calcular_amplitud(df)
     rms = np.sqrt(np.mean(np.square(df['Filtered Average Magnitude [dBm]'])))
     return pico / rms if rms != 0 else None
+
+
+# Datos de prueba
+data = {
+    'Frequency [Hz]': np.linspace(0, 1000000, 100),
+    'Filtered Average Magnitude [dBm]': np.random.uniform(-120, 0, 100)
+}
+df = pd.DataFrame(data)
+
+# Histograma de prueba
+datos_one_mag = df['Filtered Average Magnitude [dBm]'][:50]
+datos_one_frec = df['Frequency [Hz]'][:50]
+
+datos_two_mag = df['Filtered Average Magnitude [dBm]'][50:]
+datos_two_frec = df['Frequency [Hz]'][50:]
+
+# Prueba de creación de histogramas
+if datos_one_mag.any() and datos_one_frec.any():
+    crear_histograma(datos_one_frec, datos_one_mag, "Primera Isla (One)")
+
+if datos_two_mag.any() and datos_two_frec.any():
+    crear_histograma(datos_two_frec, datos_two_mag, "Segunda Isla (Two)")
+
+# 1. Prueba de frecuencia central
+frecuencia_central = calcular_frecuencia_central(df)
+print("Frecuencia central:", frecuencia_central)
+
+# 2. Prueba de ancho de banda
+ancho_banda = calcular_ancho_de_banda(df)
+print("Ancho de banda:", ancho_banda)
+
+# 3. Prueba de amplitud
+amplitud = calcular_amplitud(df)
+print("Amplitud máxima:", amplitud)
+
+# 4. Prueba de nivel de ruido
+nivel_ruido = calcular_nivel_ruido(df, umbral_ruido=-100)
+print("Nivel de ruido:", nivel_ruido)
+
+# 5. Prueba de relación señal-ruido (SNR)
+snr = calcular_snr(df, umbral_ruido=-100)
+print("Relación señal-ruido (SNR):", snr)
+
+# 6. Prueba de picos espectrales
+picos = encontrar_picos(df)
+print("Picos espectrales:\n", picos)
+
+# 7. Prueba de frecuencias espurias
+frecuencias_espurias = encontrar_frecuencias_espurias(df, umbral=-80)
+print("Frecuencias espurias:\n", frecuencias_espurias)
+
+# 8. Prueba de drift de frecuencia
+frecuencia_inicial = 500000
+frecuencia_final = 600000
+drift = calcular_drift_frecuencia(frecuencia_inicial, frecuencia_final)
+print("Drift de frecuencia:", drift)
+
+# 9. Prueba de tiempo de ocupación
+tiempos = pd.Series(np.linspace(0, 10, 100))  # Simulando tiempos de 0 a 10 segundos
+tiempo_ocupacion = calcular_tiempo_ocupacion(tiempos)
+print("Tiempo de ocupación:", tiempo_ocupacion)
+
+# 10. Prueba de crest factor
+crest_factor = calcular_crest_factor(df)
+print("Crest factor:", crest_factor)
