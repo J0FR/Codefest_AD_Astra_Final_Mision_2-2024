@@ -8,22 +8,12 @@ In the context of Earth observation satellite missions, the electronic character
 Codefest_Ad_Astra_Final_Mision_2-2024/
 
 ```
-├── src/
+├── uploads/
 │   │
 │   ├── Data/
-│   │   ├── SPG_001.csv
-│   │   ├── processed_signal_data.csv
-│   │   └── data1.csv
-│   │
-│   └── impo/
-│       |
-│       └── main3.py
-│
-├── _init_.py
-│
-│── csv_reader.py
-│
-├── picos.py
+│      ├── SPG_001.csv
+│   
+├── lpm.ipynb
 │
 └── README.md
 ```
