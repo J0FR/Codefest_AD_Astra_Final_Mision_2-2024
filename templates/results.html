@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Resultados del procesamiento</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .info {
+            width: 45%;
+        }
+        .graphs {
+            width: 45%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resultados del procesamiento</h1>
+    
+    <div class="container">
+        <div class="info">
+            <h2>Resultados de Análisis</h2>
+            <p><strong>Frecuencia central:</strong> {{ results['frecuencia_central'] }}</p>
+            <p><strong>Ancho de banda:</strong> {{ results['ancho_banda'] }}</p>
+            <p><strong>Amplitud máxima:</strong> {{ results['amplitud'] }}</p>
+            <p><strong>Nivel de ruido:</strong> {{ results['nivel_ruido'] }}</p>
+            <p><strong>Relación señal-ruido (SNR):</strong> {{ results['snr'] }}</p>
+            <p><strong>Picos espectrales:</strong></p>
+            <pre>{{ results['picos'] | tojson(indent=2) }}</pre>
+            <p><strong>Frecuencias espurias:</strong></p>
+            <pre>{{ results['frecuencias_espurias'] | tojson(indent=2) }}</pre>
+            <p><strong>Drift de frecuencia:</strong> {{ results['drift'] }}</p>
+            <p><strong>Tiempo de ocupación:</strong> {{ results['tiempo_ocupacion'] }}</p>
+            <p><strong>Crest factor:</strong> {{ results['crest_factor'] }}</p>
+            <p><strong>Valores (Frecuencia, Magnitud):</strong></p>
+            <ul>
+                {% for index, value in results['values'] %}
+                    <li>Índice: {{ index }}, Magnitud: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="graphs">
+            <h2>Gráficos</h2>
+            <img src="{{ results['histograma_one'] }}" alt="Histograma One">
+            <img src="{{ results['histograma_two'] }}" alt="Histograma Two">
+        </div>
+    </div>
+    
+    <a href="/">Volver a subir otro archivo</a>
+</body>
+</html>
+
